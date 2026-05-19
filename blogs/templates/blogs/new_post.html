@@ -1,0 +1,17 @@
+{% extends 'blogs/base.html' %}
+{% block title %}Новая запись{% endblock %}
+
+{% block content %}
+
+    <h1>Новая запись</h1>
+
+    <form action="{% url 'blogs:new_post' %}" method="post">
+
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="{% url 'blogs:index' %}">Отмена</a>
+
+{% endblock content %}

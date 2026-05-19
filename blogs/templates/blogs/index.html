@@ -1,0 +1,19 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+    <h1>Последние записи</h1>
+
+    {% for post in posts %}
+        <div>
+            <h2>{{ post.blog }}</h2>
+            <p>{{ post.text }}</p>
+            <p>{{ post.date_added|date:"d.M.Y" }}</p>
+        </div>
+    {% empty %}
+        <p>Записей пока нет.</p>
+    {% endfor %}
+
+{% endblock content %}
