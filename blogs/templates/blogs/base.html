@@ -2,14 +2,20 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta namr="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Blog{% endblock %}</title>
 </head>
 <body>
 
     <nav>
         <a href="{% url 'blogs:index' %}">Главная</a>
-        <a href="{% url 'blogs:new_post' %}">Добавить запись</a>
+        <a href="{% url 'blogs:new_post' %}">Добавить запись</a> -
+        {% if user.is_authenticated %}
+          Helloooo, {{ user.username }}.
+        {% else %}
+          <a href="{% url 'accounts:login' %}">Авторизироваться</a> 
+        {% endif %}
+        
     </nav>
 
     {% block content %}{% endblock %}
